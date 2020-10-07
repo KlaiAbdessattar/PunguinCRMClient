@@ -25,6 +25,7 @@ private registerPath =  environment.apiUrl + '/Users'
 
    saveToken(token){
      localStorage.setItem('token',token)
+     
    }
 
    getToken(){
