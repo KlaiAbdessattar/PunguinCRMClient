@@ -17,6 +17,12 @@ import { DashboardComponent } from './pages/Dashboard/Dashboard.Component'
 import { ProfilesService } from './services/profiles.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { DetailProfileComponent } from './pages/detail-profile/detail-profile.component';
+import { HeaderComponent } from './header/header.component';
+import { PagesComponent } from './pages/pages.component';
+import { SidebarModule } from 'ng-sidebar';
+  import { from } from 'rxjs';
+// import { DetailProfileComponent } from '.pages/detail-profile/detail-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +34,10 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     RegisterComponent,
     CreatepostComponent,
     CreateprofilesComponent,
-    DashboardComponent
+    DashboardComponent,
+    DetailProfileComponent,
+    HeaderComponent,
+    PagesComponent,
   
   ],
   imports: [
@@ -36,6 +45,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SidebarModule,
   ],
   providers: [AuthService, 
     ProfilesService,

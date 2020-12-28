@@ -14,8 +14,30 @@ private profilesPath = environment.apiUrl+'/Profil';
 
   create(data):Observable<profil>{
     // let headers = new HttpHeaders();
-    // headers = headers.set('Authorization',`Bearer ${this.authService.getToken()}`);
-    return this.http.post<profil>(this.profilesPath,data)
+    //  headers = headers.set('Authorization',`Bearer ${this.authService.getToken()}`);
+    let headers=new HttpHeaders({ "Content-Type": "application/json",
+    'Authorization': "Bearer "+localStorage.getItem('jwt')
+    });
+    return this.http.post<profil>(this.profilesPath,data,{headers})
   }
+  getProfile(): Observable<Array<profil>> {
+     // this.http.get(this.profilesPath, {
+    //   headers: new HttpHeaders({
+    //     "Content-Type": "application/json"
+    //   })
+    // }).subscribe(response => {
+    //   this.profiles = response;
+    // }, err => {
+    //   console.log(err)
+    // });
+    return this.http.get<Array<profil>>(this.profilesPath)
+  }
+  // export function createAuthorizationHeader() : HttpHeaders {
+  //   let headers=new HttpHeaders({ "Content-Type": "application/json",
+  //   'Authorization': "Bearer "+localStorage.getItem('token')
+  //   });
+  //   return headers;
+  //   }
+
 }
 

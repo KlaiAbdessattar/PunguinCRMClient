@@ -9,13 +9,28 @@ import { AuthService } from './auth.service';
 export class TokenInterceptorService implements HttpInterceptor {
 
   constructor(public authService: AuthService) {}
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+     // add authorization header with jwt token if available
+     //let currentUser = this.authService.;
     
-    request = request.clone({
+    
+     req = req.clone({
       setHeaders: {
-        Authorization: `Bearer ${this.authService.getToken()}`
+        Authorization: `Bearer ${JSON.parse(window.localStorage.getItem("token"))}`
       }
     });
-    return next.handle(request);
+    return next.handle(req);
+
+    // request = request.clone({
+    //  headers: request.headers.set(
+    //     'Authorization' , `Bearer`+ localStorage.getItem('token')
+    //   )
+    // });
+    // return next.handle(request);
   }
+ 
 }
+
+
+
+

@@ -21,8 +21,8 @@ export class CreateprofilesComponent {
     return this.creatprofileForm.get('Name');
   }
   create(){
-this.profilesService.create(this.creatprofileForm.value).subscribe(res=>{
-  console.log(res);
+      this.profilesService.create(this.creatprofileForm.value).subscribe(res=>{
+      console.log(res);
 });
   }
 }
